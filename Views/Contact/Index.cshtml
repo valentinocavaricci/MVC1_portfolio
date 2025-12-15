@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MVC1_portfolio.Models.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>Contact</h1>
+<div>
+   
+    <form method="post">
+
+        <div asp-validation-summary="All"></div>
+
+        <label>First Name</label><br />
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"></span>
+
+        <br />
+
+        <label>Last Name</label><br />
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+
+        <br />
+
+        <label>Email</label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+
+        <br />
+
+        <label>Message</label><br />
+        <textarea asp-for="Message"></textarea>
+        <span asp-validation-for="Message"></span>
+
+        <br />
+        <button type="submit">Send</button>
+    </form>
+    @if (ViewData["Success"] != null)
+    {
+        <p>Message sent successfully.</p>
+    }
+
+</div>
+

@@ -1,0 +1,40 @@
+﻿@model MVC1_portfolio.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+
+
+<h1>Welcome, Valentino</h1>
+
+<hr />
+
+<h3>Account Summary</h3>
+
+<p>
+    <strong>Current Balance:</strong>
+    $@Model.CurrentBalance.ToString("C")
+</p>
+
+<p>
+    <strong>Credit Score:</strong>
+    @Model.CreditScore
+</p>
+
+<hr />
+
+<h3>Recent Transactions</h3>
+
+<ul>
+    @foreach (var transaction in Model.Transactions)
+    {
+        <li>
+            <strong>@transaction.Date.ToShortDateString()</strong>
+            —
+            @transaction.Name
+            —
+            $@transaction.Amount.ToString("C")
+        </li>
+    }
+</ul>
