@@ -2,35 +2,22 @@
 using MVC1_portfolio.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MVC1_portfolio.Controllers
 {
     public class DashboardController : Controller
     {
-        [HttpGet]
+        [HttpGet] 
         public IActionResult Index()
         {
+            var transactions = TransactionStore.Transactions;
+
             var model = new DashboardViewModel
             {
-                CurrentBalance = 5234.76m,
-                CreditScore = 742,
-                Transactions = new List<Transaction>
-                {
-                    new Transaction
-                    {
-                        Date = DateTime.Today,
-                        Name = "Amazon",
-                        Description = "Online purchase",
-                        Amount = -129.99m
-                    },
-                    new Transaction
-                    {
-                        Date = DateTime.Today.AddDays(-1),
-                        Name = "Paycheck",
-                        Description = "Direct deposit",
-                        Amount = 1800.00m
-                    }
-                }
+                CurrentBalance = transactions.Sum(t => t.Amount),
+                CreditScore = 776,
+                Transactions = transactions
             };
 
             return View(model);

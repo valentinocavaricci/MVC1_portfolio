@@ -4,37 +4,62 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<h1 class="mb-4">Finance Dashboard</h1>
 
+<div class="row g-4">
 
-<h1>Welcome, Valentino</h1>
+    <!-- Account BALANCE  -->
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Account Balance</h5>
+                <p class="card-text fs-4">
+                    @Model.CurrentBalance.ToString("C")
+                </p>
+            </div>
+        </div>
+    </div>
 
-<hr />
+    <!-- Credit SCORE CARD  -->
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Credit Score</h5>
+                <p class="card-text fs-4">
+                    @Model.CreditScore
+                </p>
+            </div>
+        </div>
+    </div>
 
-<h3>Account Summary</h3>
+    <!-- Transactions CARD -->
+    <div class="col-md-3">
+        <a asp-controller="Transactions"
+           asp-action="Index"
+           class="text-decoration-none text-dark">
 
-<p>
-    <strong>Current Balance:</strong>
-    $@Model.CurrentBalance.ToString("C")
-</p>
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Transactions</h5>
+                    <p class="card-text">
+                        View and manage transactions
+                    </p>
+                </div>
+            </div>
 
-<p>
-    <strong>Credit Score:</strong>
-    @Model.CreditScore
-</p>
+        </a>
+    </div>
 
-<hr />
+    <!-- Placeholder Card -->
+    <div class="col-md-3">
+        <div class="card h-100 text-muted">
+            <div class="card-body">
+                <h5 class="card-title">Analytics</h5>
+                <p class="card-text">
+                    Coming soon
+                </p>
+            </div>
+        </div>
+    </div>
 
-<h3>Recent Transactions</h3>
-
-<ul>
-    @foreach (var transaction in Model.Transactions)
-    {
-        <li>
-            <strong>@transaction.Date.ToShortDateString()</strong>
-            —
-            @transaction.Name
-            —
-            $@transaction.Amount.ToString("C")
-        </li>
-    }
-</ul>
+</div>

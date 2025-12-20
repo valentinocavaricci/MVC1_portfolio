@@ -1,0 +1,70 @@
+﻿@model List<MVC1_portfolio.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<h1>Transactions</h1>
+
+<h3>Transaction List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].Date.ToShortDateString()</td>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].Description</td>
+                <td>@Model[i].Amount.ToString("C")</td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="index" value="@i" />
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h3>Add Transaction</h3>
+
+<form asp-action="Add" method="post" class="mb-4">
+    <div class="mb-2">
+        <label>Date</label>
+        <input type="date" name="Date" class="form-control" required />
+    </div>
+
+    <div class="mb-2">
+        <label>Name</label>
+        <input type="text" name="Name" class="form-control" required />
+    </div>
+
+    <div class="mb-2">
+        <label>Description</label>
+        <input type="text" name="Description" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Amount</label>
+        <input type="number" step="0.01" name="Amount" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Add Transaction
+    </button>
+</form>
