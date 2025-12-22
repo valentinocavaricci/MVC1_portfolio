@@ -4,11 +4,11 @@
     ViewData["Title"] = "Projects";
 }
 
-<h1 class="mb-4">My Projects</h1>
+<h1 class="mb-4 mt-4">My Projects</h1>
 
-<p class="mb-5">
+<h4 class="mb-5">
     Selected projects demonstrating backend, full-stack, and my architecture abilities.
-</p>
+</h4>
 
 <div class="row g-4">
     @foreach (var project in Model)
@@ -36,7 +36,6 @@
                     @project.Status
                 </span>
 
-                    @* BUTTON — only shows if a link exists *@
                 @if (!string.IsNullOrEmpty(project.Link))
                     {
                         <a href="@project.Link"

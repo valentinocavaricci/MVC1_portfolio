@@ -4,62 +4,139 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1 class="mb-4">Finance Dashboard</h1>
 
-<div class="row g-4">
+<h1 class="mt-5 mb-4">Welcome, Valentino.</h1>
 
-    <!-- Account BALANCE  -->
-    <div class="col-md-3">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">Account Balance</h5>
-                <p class="card-text fs-4">
+
+
+<div class="dashboard-section">
+    <div class="row g-4">
+
+        
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-title">Account Balance</div>
+                <div class="metric-value">
                     @Model.CurrentBalance.ToString("C")
-                </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Credit SCORE CARD  -->
-    <div class="col-md-3">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">Credit Score</h5>
-                <p class="card-text fs-4">
+       
+        <div class="col-md-3">
+            <div class="metric-card">
+                <div class="metric-title">Credit Score</div>
+                <div class="metric-value">
                     @Model.CreditScore
-                </p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Transactions CARD -->
-    <div class="col-md-3">
-        <a asp-controller="Transactions"
-           asp-action="Index"
-           class="text-decoration-none text-dark">
-
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Transactions</h5>
-                    <p class="card-text">
+        <div class="col-md-3">
+            <a asp-controller="Transactions"
+               asp-action="Index"
+               class="text-decoration-none text-dark">
+                <div class="metric-card">
+                    <div class="metric-title">Transactions</div>
+                    <p class="mb-0 text-muted">
                         View and manage transactions
                     </p>
                 </div>
-            </div>
+            </a>
+        </div>
 
-        </a>
-    </div>
-
-    <!-- Placeholder Card -->
-    <div class="col-md-3">
-        <div class="card h-100 text-muted">
-            <div class="card-body">
-                <h5 class="card-title">Analytics</h5>
-                <p class="card-text">
+        <div class="col-md-3">
+            <div class="metric-card text-muted">
+                <div class="metric-title">Analytics</div>
+                <p class="mb-0">
                     Coming soon
                 </p>
             </div>
         </div>
-    </div>
 
+        <div>
+            
+            <a asp-controller="Dashboard"
+               asp-action="Edit"
+               class="btn btn-outline-secondary btn-sm mt-1 mb-1">
+                Edit Dashboard
+            </a>
+            <span class="text-muted small ms-2"><i>Editing is restricted to authenticated users via Amazon Cognito</i></span>
+        </div>
+       
+
+    </div>
 </div>
+<div>
+    <h2 class="mb-2">Stocks and Investing</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dashboard-section">
+                <h5>Stocks I’m Watching</h5>
+                <h6 class="text-muted small ms-2">Find out how many shares you'd receive with an investment amount.</h6>
+
+                <form method="get" class="mb-4">
+                    <select name="symbol"
+                            class="form-select"
+                            onchange="this.form.submit()">
+                        <option value="SPY" selected="@(Model.SelectedSymbol == "SPY")">SPY</option>
+                        <option value="AAPL" selected="@(Model.SelectedSymbol == "AAPL")">AAPL</option>
+                        <option value="MSFT" selected="@(Model.SelectedSymbol == "MSFT")">MSFT</option>
+                    </select>
+                </form>
+
+                <h5>What If I Invested</h5>
+
+                <form method="get" class="mb-3">
+                    <input type="hidden" name="symbol" value="@Model.SelectedSymbol" />
+
+                    <input type="number"
+                           name="investmentAmount"
+                           step="0.01"
+                           class="form-control mb-2"
+                           placeholder="Investment amount"
+                           value="@Model.InvestmentAmount" />
+
+                    <button type="submit"
+                            class="btn btn-outline-primary btn-sm">
+                        Calculate
+                    </button>
+                </form>
+
+                @if (Model.InvestmentAmount > 0)
+                {
+                    <div class="mt-3">
+                        <strong>
+                            At today’s price, $@Model.InvestmentAmount buys:
+                        </strong>
+                        <div>
+                            @Model.Shares.ToString("0.####")
+                            shares of @Model.SelectedStock.Symbol
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dashboard-section">
+                <h5>Net Cash Flow</h5>
+
+                <div class="metric-card mt-3">
+                    <div class="metric-title">
+                        Last 30 Days
+                    </div>
+
+                    <div class="metric-value @(Model.NetCashFlow30Days >= 0 ? "text-success" : "text-danger")">
+                        @Model.NetCashFlow30Days.ToString("C")
+                    </div>
+
+                    <p class="text-muted mt-2 mb-0">
+                        Income minus expenses over the past month
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

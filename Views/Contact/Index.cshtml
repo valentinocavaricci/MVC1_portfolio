@@ -1,51 +1,65 @@
-﻿
-@model MVC1_portfolio.Models.ContactViewModel
+﻿@model MVC1_portfolio.Models.ContactViewModel
 
 @{
     ViewData["Title"] = "Contact";
 }
 
-<h1>Contact</h1>
-<div>
-    @if (ViewBag.SuccessMessage != null)
-    {
-        <div class="alert alert-success">
-            @ViewBag.SuccessMessage
+<div class="page-soft-bg">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="app-card">
+
+                    <h2 class="mb-3">Contact</h2>
+                    <p class="text-muted mb-4">
+                        Send me a message and I’ll get back to you.
+                    </p>
+
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success">
+                            @ViewBag.SuccessMessage
+                        </div>
+                    }
+
+                    <form method="post">
+
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label">First Name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Message</label>
+                            <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
         </div>
-    }
-    <form method="post">
-
-        <div asp-validation-summary="All"></div>
-
-        <label>First Name</label><br />
-        <input asp-for="FirstName" />
-        <span asp-validation-for="FirstName"></span>
-
-        <br />
-
-        <label>Last Name</label><br />
-        <input asp-for="LastName" />
-        <span asp-validation-for="LastName"></span>
-
-        <br />
-
-        <label>Email</label><br />
-        <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
-
-        <br />
-
-        <label>Message</label><br />
-        <textarea asp-for="Message"></textarea>
-        <span asp-validation-for="Message"></span>
-
-        <br />
-        <button type="submit">Send</button>
-    </form>
-    @if (ViewData["Success"] != null)
-    {
-        <p>Message sent successfully.</p>
-    }
-
+    </div>
 </div>
-
