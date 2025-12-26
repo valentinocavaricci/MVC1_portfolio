@@ -1,27 +1,110 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 text-center py-5">
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center py-5">
+            <img src="~/Images/Headshot.png"
+                 alt="Headshot"
+                 class="profile-photo mb-3" />
             <h1 class="display-4 fw-bold">
                 Valentino Cavaricci
             </h1>
 
             <p class="lead text-muted mt-3">
-                Computer Science student building backend and cloud-based systems.
+                Hi, I am a Computer Science student who builds full stack applications and aims at reinventing the social media space with my app called "Brag".
             </p>
 
-            <p class="text-muted">
-                ASP.NET MVC • AWS • Data-driven applications
-            </p>
+            <h4 class="text-muted mb-4">
+                Full-stack • AWS 
+            </h4>
 
-            <a href="/Projects" class="btn btn-outline-dark mt-4">
-                View Projects
-            </a>
 
+            <div class="d-flex justify-content-center gap-5 mt-4">
+
+                <a href="/Projects" class="image-link text-center">
+                    <img src="~/Images/icon-projects.png"
+                         alt="View Projects"
+                         class="hero-image-link" />
+                    <div class="image-link-text">Projects</div>
+                </a>
+
+                <a href="https://github.com/valentinocavaricci"
+                   target="_blank"
+                   class="image-link text-center">
+                    <img src="~/Images/icon-rings.png"
+                         alt="View GitHub"
+                         class="hero-image-link" />
+                    <div class="image-link-text">GitHub</div>
+                </a>
+
+                <a href="/Contact" class="image-link text-center">
+                    <img src="~/Images/icon-contact.png"
+                         alt="Contact Me"
+                         class="hero-image-link" />
+                    <div class="image-link-text">Contact</div>
+                </a>
+
+            </div>
+
+           
+            
+            <div class="info-section mt-4" >
+                <h2 lead text-muted mt-3">About Me</h2>
+                <div class="info-item">
+                    <span class="info-label">Education</span>
+                    <span class="info-value">
+                        B.S. Computer Science — Concordia University, Irvine
+                    </span>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Languages</span>
+                    <div class="tag-group">
+                        <span class="tag">C#</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">HTML, CSS, JavaScript</span>
+                        <span class="tag">MIPS Assembly</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Frameworks & Tools</span>
+                    <div class="tag-group">
+                        <span class="tag">ASP.NET MVC</span>
+                        <span class="tag">Razor Pages</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Cognito</span>
+                        <span class="tag">DynamoDB</span>
+                        <span class="tag">Elastic Beanstalk</span>
+                        <span class="tag">Git / GitHub</span>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">Spoken Languages</span>
+                    <div class="tag-group">
+                        <span class="tag">English</span>
+                        <span class="tag">Italian</span>
+                        <span class="tag">Russian</span>
+
+                        <span class="tag">Spanish</span>
+                        <span class="tag">French</span>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+
+
+
+                
+
+
+            </div>
         </div>
     </div>
-</div>

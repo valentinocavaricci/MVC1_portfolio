@@ -8,6 +8,7 @@ namespace MVC1_portfolio.Services
     {
         private readonly Dictionary<string, StockQuote> _mockQuotes = new Dictionary<string, StockQuote>
         {
+            //These are just mock data, eventually could scale and use a real API but for stability I chose to leave it alone.
             { "SPY", new StockQuote { Symbol = "SPY", CurrentPrice = 512.34m, DailyChangePercent = 0.42m } },
                 { "AAPL", new StockQuote { Symbol = "AAPL", CurrentPrice = 189.21m, DailyChangePercent = -0.37m } },
                 { "MSFT", new StockQuote { Symbol = "MSFT", CurrentPrice = 421.55m, DailyChangePercent = 0.81m } }

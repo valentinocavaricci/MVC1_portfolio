@@ -2,6 +2,7 @@ html {
   font-size: 14px;
 }
 
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -18,7 +19,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: #e5e7eb
 }
 
 .name-title {
@@ -71,7 +73,6 @@ body {
         margin-bottom: 20px;
     }
 
-/* Metric cards */
 .metric-card {
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
@@ -89,4 +90,80 @@ body {
 .metric-value {
     font-size: 1.6rem;
     font-weight: 600;
+}
+
+.hero-image-link {
+    width: 100px;
+    border-radius: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+    .hero-image-link:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+.image-link {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-link-text {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151; 
+}
+
+
+.info-section {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.info-item {
+    margin-bottom: 1.5rem;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    margin-bottom: 0.4rem;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    color: #111827;
+}
+
+
+.tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    border-radius: 999px;
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #e5e7eb;
+}
+
+.profile-photo 
+{
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
 }
